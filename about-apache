@@ -1,0 +1,44 @@
+Apache
+
+A Web server is a server that is responsible for accepting HTTP requests from web clients and serving them HTTP responses, usually in the form of web pages containing static (text, images etc) and dynamic (scripts) content.
+
+Main configuration file
+                         The main configuration file is /etc/httpd/conf/httpd.conf. This file is well commented and self explanatory. It contains quite a large number of settings, but we’ll concentrate on just the few necessary to setup the server.
+
+ServerRoot
+          ServerRoot is the path to the server’s configuration, error and log files. It is possible to change this path, provided all the necessary files are copied to the new location accordingly
+The default location is /etc/httpd.
+
+PidFile
+      PidFile is the process identification number for the httpd. This process number is important, because Apache spawns numerous child processes when running to accommodate the web traffic. It allows you to monitor and manipulate your server processes
+
+ServerName
+      This is the one setting you will have to change to get your server running. This is where you declare the name of your website. just a random name with no association whatsoever to the real site bearing this name. The generous comments in the file remind us that if we do not have a registered DNS name, we should use an IP address.
+
+/etc/hosts file
+             The hosts file allows easy matching of names to IP addresses. In general, using the hosts file is a good way of testing your IP-to-name configurations before committing these changes into a production environment
+
+DocumentRoot
+                DocumentRoot tells you where your web documents (html files, images etc) should be located. It is possible to reference files in other directories using aliases and symbolic links. The default directory is /var/www/html.
+
+ErrorLog
+           ErrorLog tells you where the log containing all server errors is located. This file is critical for debugging and solving server misconfiguration problems and for proper traffic shaping.
+The default location is logs/error_log. /etc/httpd/logs is a symbolic link to /var/log/httpd.
+the actual error log is /var/log/httpd/error_log.
+
+Listen
+       The Listen command tells the Web server what ports to use for incoming connections. By default, port 80 is used, although any one or several can be used. The accepted conventions calls for using port 80 for non-secure web communications (without any encryption of traffic). Secure web communications are normally handled on port 443.
+
+
+
+Modules
+     Modules are extensions that enhance the basic functionality of the Web server. The modules reflect the growth of the Web and the inclusion of dynamic content into the web pages
+There are two types of modules:
+ • Built-in modules, which are compiled into Apache and will load with the server any time it is started. Their functionality cannot be removed without recompiling the package. These modules are also known as static.
+• Loadable modules, which can be loaded on and off as required. These are the shared modules.
+
+mod_access : This module provides access control based on client host name, IP address, or other characteristics of the client request.
+mod_dir : This modules provides interface for redirects and serving directory indexes. 
+mod_perl : This module allows dynamic content produced by Perl scripts to be served to incoming requests without using the Perl interpreter every time, reducing overhead and system load
+mod_python : This allows integration of the Python programming language into the Apache server
+mod_ssl : This module provides an interface to the OpenSSL library, allowing the use of Secure Socket Layer (SSL) and Transport Layer Security (TSL) secure communication protocols.
