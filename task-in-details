@@ -1,0 +1,32 @@
+Install Apache Web Server
+To install Apache Web Server in RHEL 8 package is httpd
+# yum install httpd
+To enable and Activate httpd Service
+# systemctl enable –now httpd
+Creating an Index.html in default document root
+# echo “ Test page “ >> /var/www/html/index.html
+To restart Service
+# systemctl restart httpd
+If firewall is enabled in system
+# firewall-cmd –permanent –add-service=http
+# firewall-cmd –reload
+In AWS seecurity group
+instance->security-> security groups-> edit inbound rules-> add rules-> http-> acccss anywhere ip4 -> save
+To map hostname to ip Address
+# echo “ ipaddress   hostname” >> /etc/hosts
+To check the Webserver result
+# curl http://hostname
+
+Create a custom Virtual Hosting configuration File
+# vim /etc/httpd/conf.d/filename.conf
+content:
+<Directory “path of document root”>
+	 Require all granted
+	 AllowOverride None
+</Directory>
+<VirtualHost localhostip:80>
+	DocumentRoot “Path”
+	Servername example.com
+	ServerAdmin root@example.com
+</VirtualHost>
+

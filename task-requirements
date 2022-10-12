@@ -1,0 +1,5 @@
+i. Install Apache Web Server
+ii. Create an index.html page in default document root
+iii. Access the website using mysamplewebsite.itfs
+Note: Create a custom Virtual Hosting configuration File
+Keep backup of system configuration files before editing
